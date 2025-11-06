@@ -1,5 +1,6 @@
 {% set name = "segmentationmetrics" %}
 {% set version = "1.1.2" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -16,10 +17,11 @@ build:
 
 requirements:
   host:
-    - python >=3.9,<4.0
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.9,<4.0
+    - python >={{ python_min }}
     - absl-py >=2.1.0
     - numpy >=2.0.1
     - pandas >=2.2.3
@@ -32,6 +34,7 @@ test:
     - segmentationmetrics
   requires:
     - pip
+    - python {{ python_min }}
     - pytest
   imports:
     - segmentationmetrics
